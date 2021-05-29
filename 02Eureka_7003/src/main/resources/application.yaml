@@ -1,0 +1,18 @@
+## 配置项目端口号
+server:
+  port: 7003
+
+## 类似ZooKeeper的Eureka服务端实例配置
+eureka:
+  instance:
+    ## Eureka服务端的ip
+    hostname: eureka7003.com
+  ## 客户端连接的一些信息
+  client:
+    register-with-eureka: false # 是否向eureka服务注册中心注册自己(服务中心不会自己注册自己 所以false)
+    fetch-registry: false # 为false表示自己为注册中心
+    service-url: # eureka服务注册中心的地址 监控页面http://${eureka.instance.hostname}:${server.port}/
+      # 单击配置
+      # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      # 关联配置
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/

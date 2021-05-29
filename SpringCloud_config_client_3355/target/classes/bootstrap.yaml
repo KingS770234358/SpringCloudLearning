@@ -1,0 +1,14 @@
+## 系统级别的配置信息
+# 去哪里获取配置信息 是去"配置服务中心"应用哪里拿 而不是直接取git上拿
+spring:
+  cloud:
+    config:
+      # 去哪里获取配置服务信息
+      uri: http://localhost:3344
+      # 去哪个分支上获取资源
+      label: master
+      # 获取哪个配置文件 需要从git上获取的资源名称 不需要后缀(交代3344去git上取)
+      name: config-client
+      # 拿着个文件中的哪个生产环境
+      profile: test
+      # 原来直接访问是这么访问的: http://localhost:3344/master/application-dev.yaml

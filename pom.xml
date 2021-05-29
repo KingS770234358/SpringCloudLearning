@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wq</groupId>
+    <artifactId>SpringCloud_Learning</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>SpringCloud_api</module>
+        <module>SpringCloud_provider_dept_8001</module>
+        <module>SpringCloud_consumer_dept_80</module>
+        <module>02Eureka_7001</module>
+        <module>02Eureka_7002</module>
+        <module>02Eureka_7003</module>
+        <module>SpringCloud_provider_dept_8002</module>
+        <module>SpringCloud_provider_dept_8003</module>
+        <module>SpringCloud_consumer_dept_Feign80</module>
+        <module>SpringCloud_provider_dept_8001_Hystrix</module>
+        <module>SpringCloud_consumer_dept_Hystrix80</module>
+        <module>SpringCloud_zuul_9527</module>
+        <module>SpringCloud_config_server_3344</module>
+        <module>SpringCloud_config_client_3355</module>
+    </modules>
+
+    <!-- 因为它是一个管理项目文件,所以把总文件的打包方式设置为pom打包方式
+         正常的项目这个设置为jar
+    -->
+    <packaging>pom</packaging>
+
+    <!-- 版本号定义 统一管理下面依赖的版本 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <junit.version>4.13</junit.version>
+        <lombok.version>1.18.10</lombok.version>
+        <log4j.version>1.2.17</log4j.version>
+    </properties>
+
+    <!-- 总项目的依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringCloud的依赖包 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringBoot的依赖包 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.2.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+                <version>2.2.1.RELEASE</version>
+            </dependency>
+            <!-- 数据库连接驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.19</version>
+            </dependency>
+            <!-- druid数据源依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.21</version>
+            </dependency>
+            <!-- SpringBoot整合mybatis需要的启动器依赖(不是SpringBoot官方的)-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.1</version>
+            </dependency>
+            <!-- druid数据源使用的log4j日志 -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!-- 日志门面 -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <!-- 测试单元 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <!-- 使用Lombok插件 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!-- 在build中配置resource 防止资源导出失败的问题 -->
+    <build>
+        <resources>
+            <!-- 默认配置文件都放在resource文件夹下 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.yaml</include>
+                    <include>**/*.yml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <!-- 手动配置,让java目录下的配置文件也能生效 -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.yaml</include>
+                    <include>**/*.yml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

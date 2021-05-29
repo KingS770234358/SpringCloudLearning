@@ -1,0 +1,36 @@
+## 设置zuul应用的端口
+server:
+  port: 9527
+
+## 配置微服务应用的名称
+spring:
+  application:
+    name: springcloud-zuul-gateway
+
+## Zuul配置
+zuul:
+  routes:
+    applicationName.serviceId: springcloud-provider-dept
+    applicationName.path: /customName/**
+  ## 只隐藏一个服务的应用名
+  # ignored-services: springcloud-provider-dept
+  # 但是一般要隐藏所有的服务真实应用名 然后加上一个 公共前缀
+  ignored-services: "*"
+  prefix: /wq
+
+## Eureka配置
+eureka:
+  client:
+    # 服务注册中心服务集群的地址 要把自己注册进去 就可以发现其他的服务了
+    # (默认就是要把自己注册进去 注册中心应用本身不注册的需要指定)
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  # 实例的id
+  instance:
+    instance-id: zuul9527
+    # 显示ip
+    prefer-ip-address: true
+## eureka页面里点击status里的连接 跳转到的信息页面
+info:
+  app.name: wq-springcloud
+  company.name: FZU

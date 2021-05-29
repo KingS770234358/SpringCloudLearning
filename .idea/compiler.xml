@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SpringCloud_provider_dept_8001_Hystrix" />
+        <module name="SpringCloud_consumer_dept_80" />
+        <module name="SpringCloud_provider_dept_8003" />
+        <module name="SpringCloud_provider_dept_8002" />
+        <module name="SpringCloud_provider_dept_8001" />
+        <module name="SpringCloud_consumer_dept_Feign80" />
+        <module name="SpringCloud_zuul_9527" />
+        <module name="02Eureka_7001" />
+        <module name="SpringCloud_api" />
+        <module name="SpringCloud_config_server_3344" />
+        <module name="SpringCloud_config_client_3355" />
+        <module name="SpringCloud_consumer_dept_Hystrix80" />
+        <module name="02Eureka_7003" />
+        <module name="02Eureka_7002" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
